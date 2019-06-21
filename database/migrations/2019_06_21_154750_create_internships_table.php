@@ -15,14 +15,17 @@ class CreateInternshipsTable extends Migration
     {
         Schema::create('internships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_FK');
+            $table->bigInteger('user_FK')->unsigned();;
+            $table->foreign('user_FK')->references('id')->on('users');
             $table->string('nome_supervisor');
-            $table->integer('empresa_FK');
+            $table->bigInteger('company_FK')->unsigned();;
+            $table->foreign('company_FK')->references('id')->on('companies');
             $table->string('telefone_supervisor');
             $table->string('email_supervisor');
             $table->string('data_inicio');
             $table->string('data_fim');
-            $table->integer('orientador_FK');
+            $table->bigInteger('orientador_FK')->unsigned();;
+            $table->foreign('orientador_FK')->references('id')->on('users');
             $table->timestamps();
         });
     }
