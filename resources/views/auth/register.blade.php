@@ -8,6 +8,15 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <?php
@@ -37,7 +46,7 @@
                                         id="<?= $key ?>" 
                                         class="form-control"
                                         type="<?= $value[1] ?? 'text' ?>" 
-                                        name="<?= $value[0] ?>" 
+                                        name="<?= $key ?>" 
                                         required 
                                         autocomplete="<?= $key ?>"
                                     />
