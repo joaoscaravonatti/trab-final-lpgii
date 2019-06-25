@@ -29,6 +29,7 @@
                                             type="{{ $value[1] ?? 'text' }}" 
                                             name="{{ $key }}" 
                                             required 
+                                            value="{{ old($key) }}"
                                         />
                                     </div>
                                 </div> 
