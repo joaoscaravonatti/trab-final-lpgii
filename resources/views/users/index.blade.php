@@ -1,5 +1,6 @@
 @extends('layouts.card')
 @section('cardBody')
+    @include('partials._messages')
     @section('title', 'Usuários')
     <table class="table">
         <thead>

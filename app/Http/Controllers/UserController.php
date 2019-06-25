@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -68,8 +70,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
-        dd($user);
+        // $user = DB::table('users')
+        //     ->join('roles', 'users.role_FK', '=', 'roles.id')
+        //     ->where('users.id', '=', $id)
+        //     ->select('users.*', 'roles.name as role')
+        //     ->get();
+            
+
+        return view('users.edit', ['user' => User::findOrFail($id)]);
     }
 
     /**
@@ -92,7 +100,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::destroy($id);
+        if($id != Auth::id()) {
+            User::destroy($id);
+            Session::flash('success', 'Usuário excluído com sucesso!');
+        } else {
+            Session::flash('error', 'Você não pode excluir o próprio usuário!');            
+        }
+    
         return redirect('users');
     }
 }
