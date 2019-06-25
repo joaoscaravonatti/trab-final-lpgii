@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -20,7 +20,7 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
-    */
+     */
 
     use RegistersUsers;
 
@@ -74,7 +74,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $path = Storage::putFile('photos', $data['photo']);
-        
+
         return User::create([
             'name' => $data['name'],
             'father_name' => $data['father_name'],
@@ -88,7 +88,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'photo' => $path,
-            'role_FK' => 1
+            'role_FK' => 1,
         ]);
     }
 }
