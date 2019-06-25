@@ -3,29 +3,48 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+                        <?php
+                            $array = [
+                                'name' => [ 'Nome Completo' ],
+                                'fatherName' => [ 'Nome do Pai' ],
+                                'motherName' => [ 'Nome da Mãe' ],
+                                'birthDate' => [ 'Data de Nascimento', 'date' ],
+                                'registration' => [ 'Matrícula' ],
+                                'address' => [ 'Endereço' ],
+                                'cpf' => [ 'CPF' ],
+                                'rg' => [ 'RG' ],
+                                'contact' => [ 'Contato' ],
+                                'email' => [ 'Email', 'email' ],
+                                'password' => [ 'Senha', 'password' ],
+                                'photo' => [ 'Foto', 'file' ]
+                            ];
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            foreach($array as $key => $value): 
+                        ?>
+                            <div class="form-group row">
+                                <label for="<?= $key ?>" class="col-md-4 col-form-label text-md-right"><?= $value[0] ?></label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-8">
+                                    <input 
+                                        id="<?= $key ?>" 
+                                        class="form-control"
+                                        type="<?= $value[1] ?? 'text' ?>" 
+                                        name="<?= $value[0] ?>" 
+                                        required 
+                                        autocomplete="<?= $key ?>"
+                                    />
+                                </div>
                             </div>
-                        </div>
+                        <?php endforeach; ?> 
 
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
@@ -52,19 +71,11 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
+                        -->
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Registrar') }}
                                 </button>
                             </div>
                         </div>
