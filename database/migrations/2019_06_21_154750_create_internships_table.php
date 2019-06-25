@@ -17,15 +17,15 @@ class CreateInternshipsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_FK')->unsigned();;
             $table->foreign('user_FK')->references('id')->on('users');
-            $table->string('nome_supervisor');
+            $table->string('supervisor_name');
             $table->bigInteger('company_FK')->unsigned();;
             $table->foreign('company_FK')->references('id')->on('companies');
-            $table->string('telefone_supervisor');
-            $table->string('email_supervisor');
-            $table->string('data_inicio');
-            $table->string('data_fim');
-            $table->bigInteger('orientador_FK')->unsigned();;
-            $table->foreign('orientador_FK')->references('id')->on('users');
+            $table->string('supervisor_phone');
+            $table->string('supervisor_email');
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->bigInteger('advisor_FK')->unsigned();;
+            $table->foreign('advisor_FK')->references('id')->on('users');
             $table->timestamps();
         });
     }

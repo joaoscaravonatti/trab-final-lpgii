@@ -13,20 +13,20 @@ class CreateBancasTable extends Migration
      */
     public function up()
     {
-        Schema::create('bancas', function (Blueprint $table) {
+        Schema::create('assesment_bank', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('avaliador1_FK')->unsigned();;
-            $table->foreign('avaliador1_FK')->references('id')->on('users');            
-            $table->bigInteger('orientador_FK')->unsigned();;
-            $table->foreign('orientador_FK')->references('id')->on('users');
-            $table->bigInteger('avaliador2_FK')->unsigned();;
-            $table->foreign('avaliador2_FK')->references('id')->on('users');            
-            $table->string('nota_orientador');
-            $table->string('data_defesa');
+            $table->bigInteger('appraiser1_FK')->unsigned();;
+            $table->foreign('appraiser1_FK')->references('id')->on('users');            
+            $table->bigInteger('advisor_FK')->unsigned();;
+            $table->foreign('advisor_FK')->references('id')->on('users');
+            $table->bigInteger('appraiser2_FK')->unsigned();;
+            $table->foreign('appraiser2_FK')->references('id')->on('users');            
+            $table->string('advisor_note');
+            $table->string('defense_date');
             $table->string('status');
-            $table->string('relatorio_caminho');
-            $table->string('nota_avaliador1');
-            $table->string('nota_avaliador2');
+            $table->string('report_path');
+            $table->string('appraiser_note1');
+            $table->string('appraiser_note2');
             $table->bigInteger('company_FK')->unsigned();
             $table->foreign('company_FK')->references('id')->on('companies');            
             $table->bigInteger('user_FK')->unsigned();;
@@ -42,6 +42,6 @@ class CreateBancasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bancas');
+        Schema::dropIfExists('assesment_bank');
     }
 }
