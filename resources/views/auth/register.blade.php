@@ -23,17 +23,17 @@
                         //TODO corrigir isto
                             $array = [
                                 'name' => [ 'Nome Completo' ],
-                                'nome_pai' => [ 'Nome do Pai' ],
-                                'nome_mae' => [ 'Nome da Mãe' ],
-                                'data_nascimento' => [ 'Data de Nascimento', 'date' ],
-                                'matricula' => [ 'Matrícula' ],
-                                'endereco' => [ 'Endereço' ],
+                                'father_name' => [ 'Nome do Pai' ],
+                                'mother_name' => [ 'Nome da Mãe' ],
+                                'date_of_birth' => [ 'Data de Nascimento', 'date' ],
+                                'register' => [ 'Matrícula' ],
+                                'address' => [ 'Endereço' ],
                                 'cpf' => [ 'CPF' ],
                                 'rg' => [ 'RG' ],
-                                'contato' => [ 'Contato' ],
+                                'contact' => [ 'Contato' ],
                                 'email' => [ 'Email', 'email' ],
                                 'password' => [ 'Senha', 'password' ],
-                                'foto' => [ 'Foto', 'file' ]
+                                'photo' => [ 'Foto', 'file' ]
                             ];
 
                             foreach($array as $key => $value): 

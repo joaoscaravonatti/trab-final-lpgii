@@ -17,17 +17,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'nome_pai',
-        'nome_mae',
-        'data_nascimento',
-        'matricula',
-        'endereco',
+        'father_name',
+        'mother_name',
+        'date_of_birth',
+        'register',
+        'address',
         'cpf',
         'rg',
-        'contato',
+        'contact',
         'email',
         'password',
-        'foto',
+        'photo',
         'role_FK'
     ];
 

@@ -50,17 +50,17 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'nome_pai' => ['required', 'string', 'max:255'],
-            'nome_mae' => ['required', 'string', 'max:255'],
-            'data_nascimento' => ['required', 'date'],
-            'matricula' => ['required', 'string', 'max:255'],
-            'endereco' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'string', 'max:255'],
-            'rg' => ['required', 'string', 'max:255'],
-            'contato' => ['required', 'string', 'max:255'],
+            'father_name' => ['required', 'string', 'max:255'],
+            'mother_name' => ['required', 'string', 'max:255'],
+            'date_of_birth' => ['date'],
+            'register' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
+            'cpf' => ['required', 'numeric', 'min:11'],
+            'rg' => ['required', 'numeric', 'min:7'],
+            'contact' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'foto' => ['file'],
+            'password' => ['required', 'string', 'min:8'],
+            'photo' => ['string'],
         ]);
     }
 
@@ -74,17 +74,17 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'nome_pai' => $data['nome_pai'],
-            'nome_mae' => $data['nome_mae'],
-            'data_nascimento' => $data['data_nascimento'],
-            'matricula' => $data['matricula'],
-            'endereco' => $data['endereco'],
+            'father_name' => $data['father_name'],
+            'mother_name' => $data['mother_name'],
+            'date_of_birth' => $data['date_of_birth'],
+            'register' => $data['register'],
+            'address' => $data['address'],
             'cpf' => $data['cpf'],
             'rg' => $data['rg'],
-            'contato' => $data['contato'],
+            'contact' => $data['contact'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'foto' => $data['foto'],
+            'photo' => $data['photo'],
             'role_FK' => 1
         ]);
     }
