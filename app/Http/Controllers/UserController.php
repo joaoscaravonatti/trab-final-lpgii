@@ -90,27 +90,15 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        $user->name = $request->input('name');
-        $user->father_name = $request->input('father_name');
-        $user->mother_name = $request->input('mother_name');
-        $user->date_of_birth = $request->input('date_of_birth');
-        $user->register = $request->input('register');
-        $user->address = $request->input('address');
-        $user->cpf = $request->input('cpf');
-        $user->rg = $request->input('rg');
-        $user->contact = $request->input('contact');
-        $user->email = $request->input('email');
-
-        $status = $user->save();
+        $status = $user->update($request->all());
 
         if ($status) {
             Session::flash('success', 'Usuário alterado com sucesso!');
-        } else {
-            Session::flash('error', 'Ocorreu um erro ao alterar o usuário!');
-            return view('users.edit', ['user' => $user]);
+            return redirect('users');
         }
 
-        return redirect('users');
+        Session::flash('error', 'Ocorreu um erro ao alterar o usuário!');
+        return view('users.edit', ['user' => $user]);
     }
 
     /**

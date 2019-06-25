@@ -62,7 +62,8 @@
                         @endif
                         @else
                         <li class="nav-item">
-                            <img src="{{ asset("storage/" . Auth::user()->photo) }}" class="rounded-circle" />
+                            {{-- <img src="{{ asset("storage/" . Auth::user()->photo) }}" class="rounded-circle
+                            img-fluid" /> --}}
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
