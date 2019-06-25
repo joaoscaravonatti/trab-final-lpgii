@@ -11,19 +11,20 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <?php
+                        //TODO corrigir isto
                             $array = [
                                 'name' => [ 'Nome Completo' ],
-                                'fatherName' => [ 'Nome do Pai' ],
-                                'motherName' => [ 'Nome da Mãe' ],
-                                'birthDate' => [ 'Data de Nascimento', 'date' ],
-                                'registration' => [ 'Matrícula' ],
-                                'address' => [ 'Endereço' ],
+                                'nome_pai' => [ 'Nome do Pai' ],
+                                'nome_mae' => [ 'Nome da Mãe' ],
+                                'data_nascimento' => [ 'Data de Nascimento', 'date' ],
+                                'matricula' => [ 'Matrícula' ],
+                                'endereco' => [ 'Endereço' ],
                                 'cpf' => [ 'CPF' ],
                                 'rg' => [ 'RG' ],
-                                'contact' => [ 'Contato' ],
+                                'contato' => [ 'Contato' ],
                                 'email' => [ 'Email', 'email' ],
                                 'password' => [ 'Senha', 'password' ],
-                                'photo' => [ 'Foto', 'file' ]
+                                'foto' => [ 'Foto', 'file' ]
                             ];
 
                             foreach($array as $key => $value): 
