@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Storage;
 
 class RegisterController extends Controller
 {
@@ -60,7 +61,7 @@ class RegisterController extends Controller
             'contact' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'photo' => ['string'],
+            'photo' => ['file'],
         ]);
     }
 
@@ -72,6 +73,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $path = Storage::putFile('photos', $data['photo']);
+        
         return User::create([
             'name' => $data['name'],
             'father_name' => $data['father_name'],
@@ -84,7 +87,7 @@ class RegisterController extends Controller
             'contact' => $data['contact'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'photo' => $data['photo'],
+            'photo' => $path,
             'role_FK' => 1
         ]);
     }
