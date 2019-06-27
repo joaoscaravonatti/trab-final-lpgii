@@ -22,8 +22,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = DB::table('companies')
-            ->get();
+        $companies = DB::table('companies')->get();
 
         return view('companies.index', ['companies' => $companies]);
     }
@@ -35,7 +34,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('companies.create');
     }
 
     /**
@@ -46,7 +45,15 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status = Company::create($request->all());
+
+        if ($status) {
+            Session::flash('success', 'Empresa alterada com sucesso!');
+            return redirect('companies');
+        }
+
+        Session::flash('error', 'Ocorreu um erro ao alterar a empresa!');
+        return view('companies.create');
     }
 
     /**

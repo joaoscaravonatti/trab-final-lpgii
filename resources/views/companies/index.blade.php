@@ -1,6 +1,9 @@
 @extends('layouts.card')
 @section('cardBody')
 @section('title', 'Empresas')
+<a href="{{ route('companies.create') }}" class="btn btn-success float-right">
+    <i class="fas fa-plus"></i>
+</a>
 <table class="table">
     <thead>
         <tr>
@@ -30,7 +33,7 @@
                         @method("DELETE")
                         <button type="submit" class="btn btn-danger">
                             <i class="fas fa-trash"></i>
-                            </a>
+                        </button>
                     </form>
                 </div>
             </td>
