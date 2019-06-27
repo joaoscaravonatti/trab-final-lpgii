@@ -40,10 +40,13 @@
                     <ul class="navbar-nav mr-auto">
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('home') }}">Home</a>
+                            <a class="nav-link" href="{{ route('home') }}">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                            <a class="nav-link" href="{{ route('users.index') }}">Usuários</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('companies.index') }}">Empresas</a>
                         </li>
                         @endauth
                     </ul>
